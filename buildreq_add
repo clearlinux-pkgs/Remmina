@@ -3,6 +3,8 @@
 gtk+-dev
 json-glib-dev
 libgcrypt-dev
-libssh-dev
-vte-dev
+libsecret-dev
 libsoup-dev
+libssh-dev
+spice-gtk-dev
+vte-dev

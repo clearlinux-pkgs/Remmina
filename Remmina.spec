@@ -4,7 +4,7 @@
 #
 Name     : Remmina
 Version  : 1.2.0.rcgit.27
-Release  : 1
+Release  : 2
 URL      : https://github.com/FreeRDP/Remmina/archive/v1.2.0-rcgit.27.tar.gz
 Source0  : https://github.com/FreeRDP/Remmina/archive/v1.2.0-rcgit.27.tar.gz
 Summary  : The GTK+ Remote Desktop Client
@@ -20,13 +20,13 @@ BuildRequires : gtk+-dev
 BuildRequires : json-glib-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : libgpg-error-dev
+BuildRequires : libsecret-dev
 BuildRequires : libsoup-dev
 BuildRequires : libssh-dev
-BuildRequires : openssl-dev
 BuildRequires : pkgconfig(freerdp2)
 BuildRequires : pkgconfig(libvncserver)
-BuildRequires : pkgconfig(spice-protocol)
 BuildRequires : pkgconfig(xkbfile)
+BuildRequires : spice-gtk-dev
 BuildRequires : vte-dev
 
 %description
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523048243
+export SOURCE_DATE_EPOCH=1524067055
 mkdir clr-build
 pushd clr-build
 cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DWITH_AVAHI=off -DWITH_APPINDICATOR=off -DWITH_FREERDP=on -DWITH_TELEPATHY=OFF
@@ -102,7 +102,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1523048243
+export SOURCE_DATE_EPOCH=1524067055
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -135,6 +135,7 @@ popd
 /usr/share/icons/hicolor/16x16/emblems/remmina-rdp-ssh.png
 /usr/share/icons/hicolor/16x16/emblems/remmina-rdp.png
 /usr/share/icons/hicolor/16x16/emblems/remmina-sftp.png
+/usr/share/icons/hicolor/16x16/emblems/remmina-spice.png
 /usr/share/icons/hicolor/16x16/emblems/remmina-tool.png
 /usr/share/icons/hicolor/16x16/emblems/remmina-vnc-ssh.png
 /usr/share/icons/hicolor/16x16/emblems/remmina-vnc.png
@@ -152,6 +153,7 @@ popd
 /usr/share/icons/hicolor/22x22/emblems/remmina-rdp-ssh.png
 /usr/share/icons/hicolor/22x22/emblems/remmina-rdp.png
 /usr/share/icons/hicolor/22x22/emblems/remmina-sftp.png
+/usr/share/icons/hicolor/22x22/emblems/remmina-spice.png
 /usr/share/icons/hicolor/22x22/emblems/remmina-tool.png
 /usr/share/icons/hicolor/22x22/emblems/remmina-vnc-ssh.png
 /usr/share/icons/hicolor/22x22/emblems/remmina-vnc.png
@@ -199,6 +201,8 @@ popd
 /usr/lib64/remmina/plugins/remmina-plugin-exec.so
 /usr/lib64/remmina/plugins/remmina-plugin-nx.so
 /usr/lib64/remmina/plugins/remmina-plugin-rdp.so
+/usr/lib64/remmina/plugins/remmina-plugin-secret.so
+/usr/lib64/remmina/plugins/remmina-plugin-spice.so
 /usr/lib64/remmina/plugins/remmina-plugin-vnc.so
 /usr/lib64/remmina/plugins/remmina-plugin-xdmcp.so
 
