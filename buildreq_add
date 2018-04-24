@@ -8,3 +8,4 @@ libsoup-dev
 libssh-dev
 spice-gtk-dev
 vte-dev
+gettext
