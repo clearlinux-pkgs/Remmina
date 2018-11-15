@@ -1,7 +1,7 @@
 libX11.so.6
 libc.so.6
 libcairo.so.2
-libcrypto.so.1.0.0
+libcrypto.so.1.1
 libfreerdp-client2.so.2
 libfreerdp2.so.2
 libgcc_s.so.1
