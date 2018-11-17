@@ -4,7 +4,7 @@
 #
 Name     : Remmina
 Version  : 1.2.32.1
-Release  : 12
+Release  : 13
 URL      : https://github.com/FreeRDP/Remmina/archive/v1.2.32.1.tar.gz
 Source0  : https://github.com/FreeRDP/Remmina/archive/v1.2.32.1.tar.gz
 Summary  : The GTK+ Remote Desktop Client
@@ -133,7 +133,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542304421
+export SOURCE_DATE_EPOCH=1542430332
 mkdir -p clr-build
 pushd clr-build
 %cmake .. -DWITH_AVAHI=OFF -DWITH_APPINDICATOR=OFF -DWITH_FREERDP=ON -DWITH_TELEPATHY=OFF -DWITH_SPICE=ON -DWITH_VTE=ON -DWITH_GETTEXT=ON -DWITH_GCRYPT=ON
@@ -141,7 +141,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1542304421
+export SOURCE_DATE_EPOCH=1542430332
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Remmina
 cp COPYING %{buildroot}/usr/share/package-licenses/Remmina/COPYING
