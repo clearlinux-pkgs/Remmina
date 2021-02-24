@@ -4,7 +4,7 @@
 #
 Name     : Remmina
 Version  : 1.4.11
-Release  : 23
+Release  : 24
 URL      : https://github.com/FreeRDP/Remmina/archive/v1.4.11/Remmina-1.4.11.tar.gz
 Source0  : https://github.com/FreeRDP/Remmina/archive/v1.4.11/Remmina-1.4.11.tar.gz
 Summary  : The GTK+ Remote Desktop Client
@@ -22,7 +22,7 @@ BuildRequires : git
 BuildRequires : glibc-dev
 BuildRequires : gtk+-dev
 BuildRequires : json-glib-dev
-BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
+BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : libsecret-dev
 BuildRequires : libsoup-dev
