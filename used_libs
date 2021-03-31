@@ -19,6 +19,7 @@ libpthread.so.0
 libsecret-1.so.0
 libsodium.so.23
 libsoup-2.4.so.1
+libspice-client-glib-2.0.so.8
 libspice-client-gtk-3.0.so.5
 libssh.so.4
 libvncclient.so.1
