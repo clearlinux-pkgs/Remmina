@@ -23,4 +23,5 @@ libspice-client-gtk-3.0.so.5
 libssh.so.4
 libvncclient.so.1
 libvte-2.91.so.0
+libwebkit2gtk-4.0.so.37
 libwinpr2.so.2
