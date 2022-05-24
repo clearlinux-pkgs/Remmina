@@ -1,7 +1,6 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
 gettext
-gtk+-dev
 json-glib-dev
 libgcrypt-dev
 libsecret-dev
