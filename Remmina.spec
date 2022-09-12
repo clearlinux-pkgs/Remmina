@@ -4,7 +4,7 @@
 #
 Name     : Remmina
 Version  : 1.4.27
-Release  : 37
+Release  : 38
 URL      : https://github.com/FreeRDP/Remmina/archive/v1.4.27/Remmina-1.4.27.tar.gz
 Source0  : https://github.com/FreeRDP/Remmina/archive/v1.4.27/Remmina-1.4.27.tar.gz
 Summary  : The GTK+ Remote Desktop Client
