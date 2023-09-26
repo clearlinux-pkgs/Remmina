@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : Remmina
-Version  : 1.4.32
-Release  : 45
-URL      : https://github.com/FreeRDP/Remmina/archive/v1.4.32/Remmina-1.4.32.tar.gz
-Source0  : https://github.com/FreeRDP/Remmina/archive/v1.4.32/Remmina-1.4.32.tar.gz
+Version  : 1.4.33
+Release  : 46
+URL      : https://github.com/FreeRDP/Remmina/archive/v.1.4.33/Remmina-1.4.33.tar.gz
+Source0  : https://github.com/FreeRDP/Remmina/archive/v.1.4.33/Remmina-1.4.33.tar.gz
 Summary  : The GTK+ Remote Desktop Client
 Group    : Development/Tools
 License  : GPL-2.0 OpenSSL
@@ -133,15 +133,15 @@ man components for the Remmina package.
 
 
 %prep
-%setup -q -n Remmina-1.4.32
-cd %{_builddir}/Remmina-1.4.32
+%setup -q -n Remmina-v.1.4.33
+cd %{_builddir}/Remmina-v.1.4.33
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1695324104
+export SOURCE_DATE_EPOCH=1695749808
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -188,11 +188,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1695324104
+export SOURCE_DATE_EPOCH=1695749808
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Remmina
-cp %{_builddir}/Remmina-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/Remmina/62df4d47ea6d73566d5e8de65d8e126fd096fc4f || :
-cp %{_builddir}/Remmina-%{version}/LICENSE.OpenSSL %{buildroot}/usr/share/package-licenses/Remmina/e3ca00760c7f1c1d8e8b306eb7e41f3bf4d7f10a || :
+cp %{_builddir}/Remmina-v.%{version}/LICENSE %{buildroot}/usr/share/package-licenses/Remmina/62df4d47ea6d73566d5e8de65d8e126fd096fc4f || :
+cp %{_builddir}/Remmina-v.%{version}/LICENSE.OpenSSL %{buildroot}/usr/share/package-licenses/Remmina/e3ca00760c7f1c1d8e8b306eb7e41f3bf4d7f10a || :
 pushd clr-build-avx2
 %make_install_v3  || :
 popd

@@ -1,5 +1,5 @@
 PKG_NAME := Remmina
-URL = https://github.com/FreeRDP/Remmina/archive/v1.4.32/Remmina-1.4.32.tar.gz
+URL = https://github.com/FreeRDP/Remmina/archive/v.1.4.33/Remmina-1.4.33.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
