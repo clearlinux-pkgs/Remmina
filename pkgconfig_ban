@@ -2,5 +2,5 @@
 # but are undesirable. One entry per line, no whitespace.
 avahi-client
 ayatana-appindicator3-0.1
-freerdp3
 libpcre2-8-0
+freerdp2
