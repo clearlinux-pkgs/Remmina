@@ -7,7 +7,7 @@
 #
 Name     : Remmina
 Version  : 1.4.34
-Release  : 51
+Release  : 52
 URL      : https://github.com/FreeRDP/Remmina/archive/v1.4.34/Remmina-1.4.34.tar.gz
 Source0  : https://github.com/FreeRDP/Remmina/archive/v1.4.34/Remmina-1.4.34.tar.gz
 Summary  : The GTK+ Remote Desktop Client
@@ -20,6 +20,7 @@ Requires: Remmina-license = %{version}-%{release}
 Requires: Remmina-locales = %{version}-%{release}
 Requires: Remmina-man = %{version}-%{release}
 BuildRequires : FreeRDP-dev
+BuildRequires : FreeRDP2-dev
 BuildRequires : buildreq-cmake
 BuildRequires : curl-dev
 BuildRequires : gettext
@@ -143,7 +144,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1707419947
+export SOURCE_DATE_EPOCH=1708271483
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -161,8 +162,6 @@ export GOAMD64=v2
 %cmake .. -DWITH_APPINDICATOR=OFF \
 -DWITH_AVAHI=OFF \
 -DWITH_CUPS=OFF \
--DWITH_FREERDP=OFF \
--DWITH_FREERDP3=OFF \
 -DWITH_GCRYPT=ON \
 -DWITH_GETTEXT=ON \
 -DWITH_KIOSK_SESSION=ON \
@@ -192,40 +191,6 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
 %cmake .. -DWITH_APPINDICATOR=OFF \
 -DWITH_AVAHI=OFF \
 -DWITH_CUPS=OFF \
--DWITH_FREERDP=OFF \
--DWITH_FREERDP3=OFF \
--DWITH_GCRYPT=ON \
--DWITH_GETTEXT=ON \
--DWITH_KIOSK_SESSION=ON \
--DWITH_SPICE=ON \
--DWITH_TELEPATHY=OFF \
--DWITH_VTE=ON
-make  %{?_smp_mflags}
-popd
-mkdir -p clr-build-apx
-pushd clr-build-apx
-export GCC_IGNORE_WERROR=1
-CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
-ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
-LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-GOAMD64=v3
-CC=gcc-14
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -mapxf -mavx10.1 "
-%cmake .. -DWITH_APPINDICATOR=OFF \
--DWITH_AVAHI=OFF \
--DWITH_CUPS=OFF \
--DWITH_FREERDP=OFF \
--DWITH_FREERDP3=OFF \
 -DWITH_GCRYPT=ON \
 -DWITH_GETTEXT=ON \
 -DWITH_KIOSK_SESSION=ON \
@@ -247,7 +212,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1707419947
+export SOURCE_DATE_EPOCH=1708271483
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Remmina
 cp %{_builddir}/Remmina-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/Remmina/62df4d47ea6d73566d5e8de65d8e126fd096fc4f || :
@@ -257,17 +222,12 @@ GOAMD64=v3
 pushd clr-build-avx2
 %make_install_v3  || :
 popd
-GOAMD64=v3
-pushd clr-build-apx
-%make_install_va  || :
-popd
 GOAMD64=v2
 pushd clr-build
 %make_install
 popd
 %find_lang remmina
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
-/usr/bin/elf-move.py apx %{buildroot}-va %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -329,6 +289,8 @@ popd
 /usr/share/icons/hicolor/scalable/actions/org.remmina.Remmina-system-run-symbolic.svg
 /usr/share/icons/hicolor/scalable/apps/org.remmina.Remmina-symbolic.svg
 /usr/share/icons/hicolor/scalable/apps/org.remmina.Remmina.svg
+/usr/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-rdp-ssh-symbolic.svg
+/usr/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-rdp-symbolic.svg
 /usr/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-sftp-symbolic.svg
 /usr/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-spice-ssh-symbolic.svg
 /usr/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-spice-symbolic.svg
@@ -645,12 +607,14 @@ popd
 %defattr(-,root,root,-)
 /V3/usr/lib64/remmina/plugins/remmina-plugin-exec.so
 /V3/usr/lib64/remmina/plugins/remmina-plugin-python_wrapper.so
+/V3/usr/lib64/remmina/plugins/remmina-plugin-rdp.so
 /V3/usr/lib64/remmina/plugins/remmina-plugin-secret.so
 /V3/usr/lib64/remmina/plugins/remmina-plugin-spice.so
 /V3/usr/lib64/remmina/plugins/remmina-plugin-vnc.so
 /V3/usr/lib64/remmina/plugins/remmina-plugin-www.so
 /usr/lib64/remmina/plugins/remmina-plugin-exec.so
 /usr/lib64/remmina/plugins/remmina-plugin-python_wrapper.so
+/usr/lib64/remmina/plugins/remmina-plugin-rdp.so
 /usr/lib64/remmina/plugins/remmina-plugin-secret.so
 /usr/lib64/remmina/plugins/remmina-plugin-spice.so
 /usr/lib64/remmina/plugins/remmina-plugin-vnc.so
