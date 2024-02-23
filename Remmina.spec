@@ -6,10 +6,10 @@
 # autospec commit: da8b975
 #
 Name     : Remmina
-Version  : 1.4.34
-Release  : 53
-URL      : https://github.com/FreeRDP/Remmina/archive/v1.4.34/Remmina-1.4.34.tar.gz
-Source0  : https://github.com/FreeRDP/Remmina/archive/v1.4.34/Remmina-1.4.34.tar.gz
+Version  : 1.4.35
+Release  : 54
+URL      : https://github.com/FreeRDP/Remmina/archive/v1.4.35/Remmina-1.4.35.tar.gz
+Source0  : https://github.com/FreeRDP/Remmina/archive/v1.4.35/Remmina-1.4.35.tar.gz
 Summary  : The GTK+ Remote Desktop Client
 Group    : Development/Tools
 License  : GPL-2.0 OpenSSL
@@ -136,15 +136,15 @@ man components for the Remmina package.
 
 
 %prep
-%setup -q -n Remmina-1.4.34
-cd %{_builddir}/Remmina-1.4.34
+%setup -q -n Remmina-1.4.35
+cd %{_builddir}/Remmina-1.4.35
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1708271483
+export SOURCE_DATE_EPOCH=1708706159
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -212,7 +212,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1708271483
+export SOURCE_DATE_EPOCH=1708706159
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Remmina
 cp %{_builddir}/Remmina-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/Remmina/62df4d47ea6d73566d5e8de65d8e126fd096fc4f || :
