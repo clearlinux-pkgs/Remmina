@@ -7,7 +7,7 @@
 #
 Name     : Remmina
 Version  : 1.4.39
-Release  : 64
+Release  : 65
 URL      : https://github.com/FreeRDP/Remmina/archive/v1.4.39/Remmina-1.4.39.tar.gz
 Source0  : https://github.com/FreeRDP/Remmina/archive/v1.4.39/Remmina-1.4.39.tar.gz
 Summary  : The GTK+ Remote Desktop Client
